@@ -84,11 +84,11 @@ create table Interpretacion
 
 create table TocaInstrumento
 (
-	dni_persona int,
+	dni int,
 	pais_origen varchar(LARGO_MAX_PAIS),
 	instrumento varchar(LARGO_MAX_INSTRUMENTO),
-	primary key(dni_persona, pais_origen, instrumento),
-	foreign key(dni_persona, pais_origen) references Persona(dni, pais_nacimiento),
+	primary key(dni, pais_origen, instrumento),
+	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
 	foreign key(instrumento) references instrumento(nombre)
 );
 
