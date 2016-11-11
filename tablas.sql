@@ -88,8 +88,7 @@ create table TocaInstrumento
 	pais_origen varchar(LARGO_MAX_PAIS),
 	instrumento varchar(LARGO_MAX_INSTRUMENTO),
 	primary key(dni_persona, pais_origen, instrumento),
-	foreign key(dni_persona) references Persona(dni),
-	foreign key(pais_origen) references Pais(nombre),
+	foreign key(dni_persona, pais_origen) references Persona(dni, pais_nacimiento),
 	foreign key(instrumento) references instrumento(nombre)
 );
 
@@ -100,8 +99,7 @@ create table Compuesta -- banda, no cancion
 	artista int,
 	fecha_ingreso date,
 	primary key(dni, pais_origen, artista),
-	foreign key(dni) references Persona(dni),
-	foreign key(pais_origen) references Pais(nombre),
+	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
 	foreign key(artista) references Artista(id)
 );
 
@@ -112,8 +110,7 @@ create table FechaSalida -- banda, no cancion
 	artista int,
 	fecha_salida date,
 	primary key(dni, pais_origen, artista),
-	foreign key(dni) references Persona(dni),
-	foreign key(pais_origen) references Pais(nombre),
+	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
 	foreign key(artista) references Artista(id)
 );
 create table Lanza
@@ -142,9 +139,7 @@ create table Pertenece
 	album int,
 	numero_pista int,
 	primary key(nombre, id_cancion, artista, album),
-	foreign key(nombre) references Interpretacion(nombre),
-	foreign key(id_cancion) references Cancion(id),
-	foreign key(artista) references Artista(id),
+	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista),
 	foreign key(album) references Album(id)
 );
 
@@ -155,9 +150,7 @@ create table InstrumentoCancion
 	artista int,
 	instrumento varchar(LARGO_MAX_INSTRUMENTO),
 	primary key(nombre, id_cancion, artista, instrumento),
-	foreign key(nombre) references Interpretacion(nombre),
-	foreign key(id_cancion) references Cancion(id),
-	foreign key(artista) references Artista(id),
+	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista),
 	foreign key(instrumento) references Instrumento(nombre)
 );
 
@@ -171,9 +164,7 @@ create table Genero
 	artista int,
 	genero varchar(LARGO_MAX_GENERO),
 	primary key(nombre, id_cancion, artista, genero),
-	foreign key(nombre) references Interpretacion(nombre),
-	foreign key(id_cancion) references Cancion(id),
-	foreign key(artista) references Artista(id)
+	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
 );
 
 create table Idioma
@@ -183,7 +174,5 @@ create table Idioma
 	artista int,
 	idioma varchar(LARGO_MAX_IDIOMA),
 	primary key(nombre, id_cancion, artista, idioma),
-	foreign key(nombre) references Interpretacion(nombre),
-	foreign key(id_cancion) references Cancion(id),
-	foreign key(artista) references Artista(id)
+	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
 );
