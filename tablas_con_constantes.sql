@@ -121,9 +121,9 @@ create table ComponeCancion
 
 create table Pertenece
 (
-	nombre varchar(32),
 	id_cancion int,
 	artista int,
+	nombre varchar(32),
 	album int,
 	numero_pista int,
 	primary key(nombre, id_cancion, artista, album),
@@ -133,9 +133,9 @@ create table Pertenece
 
 create table InstrumentoCancion
 (
-	nombre varchar(32),
 	id_cancion int,
 	artista int,
+	nombre varchar(32),
 	instrumento int,
 	primary key(nombre, id_cancion, artista, instrumento),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista),
@@ -147,9 +147,9 @@ create table InstrumentoCancion
 
 create table Genero
 (
-	nombre varchar(32),
 	id_cancion int,
 	artista int,
+	nombre varchar(32),
 	genero varchar(32),
 	primary key(nombre, id_cancion, artista, genero),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
@@ -157,9 +157,9 @@ create table Genero
 
 create table Idioma
 (
-	nombre varchar(32),
 	id_cancion int,
 	artista int,
+	nombre varchar(32),
 	idioma varchar(32),
 	primary key(nombre, id_cancion, artista, idioma),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
