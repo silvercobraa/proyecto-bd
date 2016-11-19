@@ -92,7 +92,7 @@ create table Compuesta -- banda, no cancion
 
 create table FechaSalida -- banda, no cancion
 (
-	dni int,
+	dni varchar(15),
 	pais_origen varchar(32),
 	artista int,
 	fecha_salida date,
