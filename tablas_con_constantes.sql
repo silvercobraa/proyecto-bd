@@ -1,3 +1,5 @@
+-- Le puse varchar(32) a todo por ahora
+
 -- Tablas asociadas a entidades
 -- ============================
 create table Pais
@@ -9,7 +11,7 @@ create table Pais
 
 create table Persona
 (
-	dni int,
+	dni varchar(15),
 	nombre varchar(32),
 	apellido varchar(32),
 	sexo char,
@@ -21,8 +23,9 @@ create table Persona
 
 create table Instrumento
 (
+	id int,
 	nombre varchar(32),
-	primary key(nombre)
+	primary key(id)
 );
 
 create table Artista
@@ -56,7 +59,7 @@ create table Interpretacion
 	id_cancion int,
 	id_artista int,
 	nombre varchar(32),
-	duracion int,
+	duracion time,
 	fecha_lanzamiento date,
 	primary key(id_cancion, nombre, id_artista),
 	foreign key(id_cancion) references Cancion(id),
@@ -68,17 +71,17 @@ create table Interpretacion
 
 create table TocaInstrumento
 (
-	dni int,
+	dni varchar(15),
 	pais_origen varchar(32),
-	instrumento varchar(32),
+	instrumento int,
 	primary key(dni, pais_origen, instrumento),
 	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
-	foreign key(instrumento) references instrumento(nombre)
+	foreign key(instrumento) references instrumento(id)
 );
 
 create table Compuesta -- banda, no cancion
 (
-	dni int,
+	dni varchar(15),
 	pais_origen varchar(32),
 	artista int,
 	fecha_ingreso date,

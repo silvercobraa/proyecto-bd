@@ -1,0 +1,97 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\lstset{basicstyle=\footnotesize}
+
+\author{César Bolívar Severino, Pedro Gallardo Robinson} % Porqué no sale esta wea en el pdf?
+														   % coz you have to do maketitle :DDDD 
+														   % wena xD
+\title{Fase III}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Descripción}
+
+La base de datos de música tiene novedosas funcionalidades que pueden resultar muy prácticas a la hora de obtener información relevante, tanto de los artistas, como de las canciones o álbumes.
+Su característica mas reciente, es la capacidad de encontrar diferentes versiones de la misma canción, ya que tiene registro de las composiciones originales (pudiendo ser ésta la primera versión de una canción, tanto como una pieza escrita por algún músico clásico antiguo). 
+\newline
+Se han cambiado algunos enfoques desde la fase pasada.
+\begin{enumerate}
+	\item Ahora todos los artistas son tratados como bandas y están compuestos por personas, los solistas son casos especiales de bandas compuestas por una sola persona.
+	\item Se han puestos \textit{numeros de identificación} (nombrados como \textit{id} en las relaciones), con la finalidad de normalizar de manera sencilla los datos y evitar cambios complicados en las tablas de relaciones.
+\end{enumerate}
+
+\newpage
+
+\section{Modelo Conceptual}
+
+\subsection{MER}
+\begin{center}
+\includegraphics[scale=0.25]{MER.png}
+\end{center}
+
+\subsection{Restricciones Adicionales}
+ %Escribir restricciones adicionales acá.
+ \begin{enumerate}
+ \item Un integrante de una banda no podrá salir ni entrar dos veces seguidas, por consecuente, las fecha de salida debe ir después de una fecha de entrada y no podrá entrar antes de una fecha de salida.
+ \item 
+ \end{enumerate}
+\newpage
+
+\section{Modelo Relacional}
+
+\subsection{Export Postgres}
+%\lstinputlisting[language=Sql]{export_postgres.sql}
+
+\subsection{Dependencias funcionales}
+%Agregar Dependencias funcionales acá.
+Se han definido las siguientes dependencias funcionales para cada entidad del modelo.
+\begin{description}
+
+	\item [Persona]
+	%\newline
+	$	\{ dni, pais\_nacimiento \} \rightarrow \{ nombre, apellido, sexo, fecha\_nacimiento \} $
+		
+	\item [Artista]
+	%\newline
+	$	\{ id \} \rightarrow \{ nombre\_artistico, pais\_consagracion \} $
+	
+	\item [Canción]
+	%\newline
+		$\{ id\_cancion \} \rightarrow \{ nombre, id\_artista \}$
+	
+	\item [Composición]
+	%\newline
+	$\{ id\_cancion \} \rightarrow \{ nombre\_tema, id\_artista, duracion, fecha\_lanzamiento, id\_composicion \}$
+	
+	\item [Album]
+	%\newline
+	$\{ id\_album \} \rightarrow \{ nombre\_album, fecha\_lanzamiento, sello\_discografico \}$
+	
+	\item [Instrumento]
+	$\{ id\} \rightarrow \{nombre_instrumento\} $
+	
+	\item [Pais]
+	$ \{nombre\_pais\} \rightarrow \{continente\} $
+	
+	\item [ComposicionArtista]
+	$ \{dni\_persona, pais\_persona, id\_artista \} \rightarrow \{ fecha\_ingreso \} $
+		
+\end{description}
+
+\newpage
+
+\section{Consultas}
+
+Inventar consultas y ponerlas acá.
+
+\end{document}
