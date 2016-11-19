@@ -136,10 +136,10 @@ create table InstrumentoCancion
 	nombre varchar(32),
 	id_cancion int,
 	artista int,
-	instrumento varchar(32),
+	instrumento int,
 	primary key(nombre, id_cancion, artista, instrumento),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista),
-	foreign key(instrumento) references Instrumento(nombre)
+	foreign key(instrumento) references Instrumento(id)
 );
 
 -- Tablas asociadas a atributos multivalua3
