@@ -11,3 +11,9 @@
 	from Artista as ar, Album as al, Lanza as l
 	where ar.id = l.artista and al.id = l.album and al.sello = 'Roadrunner Records'
 
+-- 3) Obtener el nombre y album al que pertenecen todas las canciones de Nujabes
+	select i.nombre, al.nombre
+	from Interpretacion as i, Album as al, Pertenece as p, Artista as ar
+	where p.id_cancion = i.id_cancion and p.artista = i.id_artista and p.nombre = i.nombre and p.album = al.id and p.artista = ar.id and
+	ar.nombre_artistico = 'Nujabes'
+
