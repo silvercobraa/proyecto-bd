@@ -86,6 +86,16 @@ Se han definido las siguientes dependencias funcionales para cada entidad del mo
 	\item [ComposicionArtista]
 	$ \{dni\_persona, pais\_persona, id\_artista \} \rightarrow \{ fecha\_ingreso \} $
 
+	%%%%%
+	\item [Compuesta]
+	$ \{dni, pais\_origen, artista \} \rightarrow \{ fecha\_ingreso \} $
+
+	\item [FechaSalida]
+	$ \{dni, pais\_origen, artista \} \rightarrow \{ fecha\_salida \} $
+
+	\item [Pertenece]
+	$ \{id\_cancion, artista, nombre \} \rightarrow \{ numero\_pista \} $
+		
 \end{description}
 
 \newpage
