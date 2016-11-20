@@ -22,12 +22,12 @@
 \section{Descripción}
 
 La base de datos de música tiene novedosas funcionalidades que pueden resultar muy prácticas a la hora de obtener información relevante, tanto de los artistas, como de las canciones o álbumes.
-Su característica mas reciente, es la capacidad de encontrar diferentes versiones de la misma canción, ya que tiene registro de las composiciones originales (pudiendo ser ésta la primera versión de una canción, tanto como una pieza escrita por algún músico clásico antiguo).
+Su característica más reciente, es la capacidad de encontrar diferentes versiones de la misma canción, ya que tiene registro de las composiciones originales (pudiendo ser ésta la primera versión de una canción, tanto como una pieza escrita por algún músico clásico antiguo).
 \newline
 Se han cambiado algunos enfoques desde la fase pasada.
 \begin{enumerate}
-	\item Ahora todos los artistas son tratados como bandas y están compuestos por personas, los solistas son casos especiales de bandas compuestas por una sola persona.
-	\item Se han puestos \textit{numeros de identificación} (nombrados como \textit{id} en las relaciones), con la finalidad de normalizar de manera sencilla los datos y evitar cambios complicados en las tablas de relaciones.
+	\item Ahora todos los artistas son tratados como bandas y están compuestos por personas. Los solistas son casos especiales de bandas compuestas por una sola persona.
+	\item Se han puestos \textit{números de identificación} (nombrados como \textit{id} en las relaciones), con la finalidad de normalizar de manera sencilla los datos y evitar cambios complicados en las tablas de relaciones.
 \end{enumerate}
 
 \newpage
@@ -42,7 +42,7 @@ Se han cambiado algunos enfoques desde la fase pasada.
 \subsection{Restricciones Adicionales}
  %Escribir restricciones adicionales acá.
  \begin{enumerate}
- \item Un integrante de una banda no podrá salir ni entrar dos veces seguidas, por consecuente, las fecha de salida debe ir después de una fecha de entrada y no podrá entrar antes de una fecha de salida.
+ \item Un integrante de una banda no podrá salir ni entrar dos veces seguidas. Por consecuente, su fecha de salida  (si es que aplica) debe ser posterior a su fecha de entrada y no podrá entrar antes de una fecha de salida.
  \item
  \end{enumerate}
 \newpage
