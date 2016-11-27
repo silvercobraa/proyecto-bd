@@ -1,51 +1,45 @@
--- Constantes por definir:
--- =======================
--- LARGO_MAX_NOMBRE_PERSONA
--- LARGO_MAX_APELLIDO_PERSONA
--- LARGO_MAX_PAIS
--- LARGO_MAX_CONTINENTE
--- LARGO_MAX_INSTRUMENTO
--- LARGO_MAX_NOMBRE_ARTISTICO
--- LARGO_MAX_BANDA
--- LARGO_MAX_SELLO
--- LARGO_MAX_ALBUM
--- LARGO_MAX_CANCION
--- LARGO_MAX_INTERPRETACION
--- LARGO_MAX_GENERO
--- LARGO_MAX_IDIOMA
+-- Le puse varchar(32) a todo por ahora
 
 -- Tablas asociadas a entidades
 -- ============================
 create table Pais
 (
-	nombre varchar(LARGO_MAX_PAIS),
-	continente char(LARGO_MAX_CONTINENTE),
+	nombre varchar(32),
+	continente char(32),
 	primary key(nombre)
 );
 
 create table Persona
 (
-	dni int,
-	nombre varchar(LARGO_MAX_NOMBRE_PERSONA),
-	apellido varchar(LARGO_MAX_APELLIDO_PERSONA),
+	dni varchar(15),
+	nombre varchar(32),
+	apellido varchar(32),
 	sexo char,
 	fecha_nacimiento date,
-	pais_nacimiento char(LARGO_MAX_PAIS),
+	pais_nacimiento char(32),
 	primary key(dni, pais_nacimiento),
 	foreign key(pais_nacimiento) references Pais(nombre)
 );
 
 create table Instrumento
 (
-	nombre varchar(LARGO_MAX_INSTRUMENTO),
-	primary key(nombre)
+	id int,
+	nombre varchar(32),
+	primary key(id)
+);
+
+create table SelloDiscografico
+(
+	id int,
+	nombre varchar(32),
+	primary key(id)
 );
 
 create table Artista
 (
 	id int,
-	nombre_artistico varchar(LARGO_MAX_NOMBRE_ARTISTICO),
-	nombre_pais varchar(LARGO_MAX_PAIS),
+	nombre_artistico varchar(32),
+	nombre_pais varchar(32),
 	primary key(id),
 	foreign key(nombre_pais) references Pais(nombre)
 );
@@ -53,17 +47,17 @@ create table Artista
 create table Album
 (
 	id int,
-	-- id varchar(),
-	nombre varchar(LARGO_MAX_ALBUM),
+	nombre varchar(32),
 	fecha date,
-	sello varchar(LARGO_MAX_SELLO),
-	primary key(id)
+	sello int,
+	primary key(id),
+	foreign key(id) references SelloDiscografico(id)
 );
 
 create table Cancion
 (
 	id int,
-	nombre varchar(LARGO_MAX_CANCION),
+	nombre varchar(32),
 	primary key(id)
 );
 
@@ -71,8 +65,8 @@ create table Interpretacion
 (
 	id_cancion int,
 	id_artista int,
-	nombre varchar(LARGO_MAX_INTERPRETACION),
-	duracion int,
+	nombre varchar(32),
+	duracion time,
 	fecha_lanzamiento date,
 	primary key(id_cancion, nombre, id_artista),
 	foreign key(id_cancion) references Cancion(id),
@@ -84,18 +78,18 @@ create table Interpretacion
 
 create table TocaInstrumento
 (
-	dni int,
-	pais_origen varchar(LARGO_MAX_PAIS),
-	instrumento varchar(LARGO_MAX_INSTRUMENTO),
+	dni varchar(15),
+	pais_origen varchar(32),
+	instrumento int,
 	primary key(dni, pais_origen, instrumento),
 	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
-	foreign key(instrumento) references instrumento(nombre)
+	foreign key(instrumento) references instrumento(id)
 );
 
 create table Compuesta -- banda, no cancion
 (
-	dni int,
-	pais_origen varchar(LARGO_MAX_PAIS),
+	dni varchar(15),
+	pais_origen varchar(32),
 	artista int,
 	fecha_ingreso date,
 	primary key(dni, pais_origen, artista),
@@ -105,14 +99,15 @@ create table Compuesta -- banda, no cancion
 
 create table FechaSalida -- banda, no cancion
 (
-	dni int,
-	pais_origen varchar(LARGO_MAX_PAIS),
+	dni varchar(15),
+	pais_origen varchar(32),
 	artista int,
 	fecha_salida date,
 	primary key(dni, pais_origen, artista),
 	foreign key(dni, pais_origen) references Persona(dni, pais_nacimiento),
 	foreign key(artista) references Artista(id)
 );
+
 create table Lanza
 (
 	artista int,
@@ -133,9 +128,9 @@ create table ComponeCancion
 
 create table Pertenece
 (
-	nombre varchar(LARGO_MAX_INTERPRETACION),
 	id_cancion int,
 	artista int,
+	nombre varchar(32),
 	album int,
 	numero_pista int,
 	primary key(nombre, id_cancion, artista, album),
@@ -145,13 +140,13 @@ create table Pertenece
 
 create table InstrumentoCancion
 (
-	nombre varchar(LARGO_MAX_INTERPRETACION),
 	id_cancion int,
 	artista int,
-	instrumento varchar(LARGO_MAX_INSTRUMENTO),
+	nombre varchar(32),
+	instrumento int,
 	primary key(nombre, id_cancion, artista, instrumento),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista),
-	foreign key(instrumento) references Instrumento(nombre)
+	foreign key(instrumento) references Instrumento(id)
 );
 
 -- Tablas asociadas a atributos multivalua3
@@ -159,20 +154,20 @@ create table InstrumentoCancion
 
 create table Genero
 (
-	nombre varchar(LARGO_MAX_INTERPRETACION),
 	id_cancion int,
 	artista int,
-	genero varchar(LARGO_MAX_GENERO),
+	nombre varchar(32),
+	genero varchar(32),
 	primary key(nombre, id_cancion, artista, genero),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
 );
 
 create table Idioma
 (
-	nombre varchar(LARGO_MAX_INTERPRETACION),
 	id_cancion int,
 	artista int,
-	idioma varchar(LARGO_MAX_IDIOMA),
+	nombre varchar(32),
+	idioma varchar(32),
 	primary key(nombre, id_cancion, artista, idioma),
 	foreign key(nombre, id_cancion, artista) references Interpretacion(nombre, id_cancion, id_artista)
 );

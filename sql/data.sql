@@ -41,19 +41,27 @@ INSERT INTO Instrumento VALUES (06, 'Voz');
 INSERT INTO Instrumento VALUES (07, 'Mezcladora');
 INSERT INTO Instrumento VALUES (08, 'Guitarra acústica');
 
-INSERT INTO Album VALUES(1, 'Valley of the Damned', '25-2-2003', 'Sanctuary Records');
-INSERT INTO Album VALUES(2, 'Sonic Firestorm', '11-5-2004', 'Thin Ice Studios');
-INSERT INTO Album VALUES(3, 'Inhuman Rampage', '9-10-2006', 'Roadrunner Records');
-INSERT INTO Album VALUES(4, 'Ultra Beatdown', '26-8-2008', 'Universal Music');
-INSERT INTO Album VALUES(5, 'The Power Within', '15-4-2012', 'Roadrunner Records');
+INSERT INTO SelloDiscografico VALUES(1, 'Sanctuary Records');
+INSERT INTO SelloDiscografico VALUES(2, 'Thin Ice Studios');
+INSERT INTO SelloDiscografico VALUES(3, 'Roadrunner Records');
+INSERT INTO SelloDiscografico VALUES(4, 'Universal Music');
+INSERT INTO SelloDiscografico VALUES(5, 'Megaforce Records');
+INSERT INTO SelloDiscografico VALUES(6, 'Elektra Records');
+INSERT INTO SelloDiscografico VALUES(7, 'Hydeout Productions');
+
+INSERT INTO Album VALUES(1, 'Valley of the Damned', '25-2-2003', 1);
+INSERT INTO Album VALUES(2, 'Sonic Firestorm', '11-5-2004', 2);
+INSERT INTO Album VALUES(3, 'Inhuman Rampage', '9-10-2006', 3);
+INSERT INTO Album VALUES(4, 'Ultra Beatdown', '26-8-2008', 4);
+INSERT INTO Album VALUES(5, 'The Power Within', '15-4-2012', 3);
 
 
-INSERT INTO Album VALUES(11, 'Kill ''em all', '25-7-1983', 'Megaforce Records');
-INSERT INTO Album VALUES(12, 'Ride the Lightning', '27-7-1984', 'Elektra Records');
-INSERT INTO Album VALUES(13, 'Master of Puppets', '3-3-1986', 'Elektra Records');
+INSERT INTO Album VALUES(11, 'Kill ''em all', '25-7-1983', 5);
+INSERT INTO Album VALUES(12, 'Ride the Lightning', '27-7-1984', 6);
+INSERT INTO Album VALUES(13, 'Master of Puppets', '3-3-1986', 6);
 
-INSERT INTO Album VALUES(21, 'Modal Soul', '11-11-2005', 'Hydeout Productions');
-INSERT INTO Album VALUES(22, 'Spiritual State', '3-12-2011', 'Hydeout Productions');
+INSERT INTO Album VALUES(21, 'Modal Soul', '11-11-2005', 7);
+INSERT INTO Album VALUES(22, 'Spiritual State', '3-12-2011', 7);
 
 INSERT INTO Cancion VALUES(1, 'Starfire');
 INSERT INTO Cancion VALUES(2, 'Above the Winter Moonlight');
